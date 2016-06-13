@@ -129,7 +129,8 @@ def parse_dev_info_line(line, ringinfo)
   _replication_port = $7
   dev.name = $8
   dev.weight = $9
-  dev.partitions = $10
+  # https://github.com/YorickPeterse/ruby-lint/issues/175
+  dev.partitions = $~[10]
 
   ringinfo.add_device dev
 end

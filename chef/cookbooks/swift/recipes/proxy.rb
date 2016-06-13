@@ -381,8 +381,8 @@ end
 
 if node[:platform_family] == "debian"
   bash "restart swift proxy things" do
-    code <<-EOH
-EOH
+    # https://github.com/YorickPeterse/ruby-lint/issues/173
+    code ""
     action :nothing
     subscribes :run, resources(template: "/etc/swift/proxy-server.conf")
     notifies :restart, resources(service: "memcached-swift-proxy")
